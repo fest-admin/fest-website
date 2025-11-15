@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fest: Juego Social Todo-en-Uno</title>
+
+    <link rel="icon" type="image/x-icon" href="img/icon.png">
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <script src="https://kit.fontawesome.com/d08c2dc91c.js" crossorigin="anonymous"></script>
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+        }
+        @keyframes slide {
+            from {
+                transform: translateX(0);
+            }
+            to {
+                transform: translateX(-50%);
+            }
+        }
+    </style>
+</head>
+<body class="bg-black text-white">
+    <!-- Hero Section -->
+    <div class="flex flex-col min-h-screen">
+        <div class="flex justify-end pt-4 lg:pt-6 px-4 lg:px-10">
+            <div class="flex items-center gap-2 py-1 relative">
+                <i class="fa-solid fa-globe text-white"></i>
+                <select id="language-switcher" class="bg-transparent text-white appearance-none outline-none cursor-pointer absolute inset-0 opacity-0 w-full h-full">
+                    <option value="es" selected class="text-sm">Español</option>
+                    <option value="en" class="text-sm">Inglés</option>
+                </select>
+                <i class="fa-solid fa-chevron-down text-white"></i>
+            </div>
+        </div>
+        <section class="flex flex-col lg:flex-row lg:items-center text-center lg:text-left px-6 flex-1 pt-4 lg:pt-0">
+            <div class="hidden lg:flex w-1/2 justify-center">
+                <img src="img/hero_img.png" alt="Fest Characters" class="w-full max-w-xl">
+            </div>
+            <div class="flex flex-col items-center lg:items-start w-full lg:w-1/2">
+                <img src="img/fest_logo_white.png" alt="Fest Logo" class="w-28 lg:w-40 mb-6">
+                <img src="img/hero_img.png" alt="Fest Characters" class="w-full max-w-md lg:hidden mb-2">
+                <h1 class="text-2xl lg:text-4xl font-semibold leading-tight">
+                    El juego definitivo para elevar tus reuniones sociales. <br class="hidden lg:block"> ¡Juega, conecta y diviértete!
+                </h1>
+                <p class="hidden lg:flex text-base lg:text-lg mt-4 max-w-lg">
+                    Fest es un social game para cualquier plan: noches chill en casa, salidas con amigos, afters, juntadas random, tú decides. Con Fest, cualquier hangout se vuelve mucho más divertido.
+                </p>
+                <div class="flex flex-col sm:flex-row gap-4 mt-6">
+                    <button class="bg-white text-black font-semibold py-3 px-6 rounded-lg flex items-center shadow-md hover:bg-gray-200 transition">
+                        <span class="mr-2"><i class="fa-brands fa-apple"></i></span> Disponible pronto...
+                    </button>
+                    <a href="https://play.google.com/store/apps/details?id=com.fest.festapp" target="_blank" rel="noopener noreferrer" class="border border-white text-white font-semibold py-3 px-6 rounded-lg flex items-center shadow-md hover:bg-white hover:text-black transition">
+                        <span class="mr-2"><i class="fa-brands fa-google-play"></i></span> Descargar en Google Play
+                    </a>
+                </div>
+                <div class="flex gap-6 mt-6">
+                    <a href="https://www.instagram.com/fest_app/" target="_blank" rel="noopener noreferrer" class="w-8 h-8">
+                        <i class="fa-brands fa-instagram text-2xl"></i>
+                    </a>
+                    <a href="https://www.tiktok.com/@fest_app/" target="_blank" rel="noopener noreferrer" class="w-8 h-8">
+                        <i class="fa-brands fa-tiktok text-2xl"></i>
+                    </a>
+                    <a href="https://open.spotify.com/user/315oduasmzbs7odqviag4wxta4hq" target="_blank" rel="noopener noreferrer" class="w-8 h-8">
+                        <i class="fa-brands fa-spotify text-2xl"></i>
+                    </a>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Modos de Juego -->
+    <section class="text-left lg:text-center pt-10 lg:pt-20 px-4 lg:px-6">
+        <h2 class="text-xl lg:text-3xl font-semibold">Un modo de juego para cada vibe.</h2>
+        <p class="text-base lg:text-lg mt-4 lg:max-w-2xl mx-auto">Elige tu modo de juego y deja que Fest haga el resto. Cada modo de juego tiene su propia vibe: desde algo chill hasta algo más spicy, siempre habrá uno que encaje perfecto con el mood del grupo.</p>
+    </section>
+    <!-- Carrusel -->
+    <div class="relative w-full pb-10 lg:pb-20 pt-10 overflow-hidden">
+        <div class="group flex gap-4 md:gap-8 w-max animate-[slide_24s_linear_infinite]">
+            <!-- Primera ronda de imágenes -->
+            <img src="img/speedy_deck.png" alt="Speedy" class="w-52 md:w-80 transition-transform duration-300 hover:scale-110">
+            <img src="img/pre_deck.png" alt="Pre" class="w-52 md:w-80 transition-transform duration-300 hover:scale-110">
+            <img src="img/pari_deck.png" alt="Pari" class="w-52 md:w-80 transition-transform duration-300 hover:scale-110">
+            <img src="img/after_deck.png" alt="After" class="w-52 md:w-80 transition-transform duration-300 hover:scale-110">
+            <img src="img/hot_deck.png" alt="Hot" class="w-52 md:w-80 transition-transform duration-300 hover:scale-110">
+            <img src="img/bonds_deck.png" alt="Bonds" class="w-52 md:w-80 transition-transform duration-300 hover:scale-110">
+            <img src="img/couples_deck.png" alt="Couples" class="w-52 md:w-80 transition-transform duration-300 hover:scale-110">
+
+            <!-- Segunda ronda de imágenes -->
+            <img src="img/speedy_deck.png" alt="Speedy" class="w-52 md:w-80 transition-transform duration-300 hover:scale-110">
+            <img src="img/pre_deck.png" alt="Pre" class="w-52 md:w-80 transition-transform duration-300 hover:scale-110">
+            <img src="img/pari_deck.png" alt="Pari" class="w-52 md:w-80 transition-transform duration-300 hover:scale-110">
+            <img src="img/after_deck.png" alt="After" class="w-52 md:w-80 transition-transform duration-300 hover:scale-110">
+            <img src="img/hot_deck.png" alt="Hot" class="w-52 md:w-80 transition-transform duration-300 hover:scale-110">
+            <img src="img/bonds_deck.png" alt="Bonds" class="w-52 md:w-80 transition-transform duration-300 hover:scale-110">
+            <img src="img/couples_deck.png" alt="Couples" class="w-52 md:w-80 transition-transform duration-300 hover:scale-110">
+        </div>
+    </div>
+
+    <!-- Fest Rules & Juegos -->
+    <section class="text-left lg:text-center py-10 lg:py-20 px-4 lg:px-6">
+        <h2 class="text-xl lg:text-3xl font-semibold">Fest Rules. Nuestro juego no tiene reglas... hasta que las tiene.</h2>
+        <p class="text-base lg:text-lg mt-4 lg:max-w-2xl mx-auto">Algunos modos de juego incluyen reglas sorpresa que pueden aparecer en cualquier momento. Cuando salen, lo cambian todo: nuevas dinámicas, restricciones random y retos inesperados.</p>
+        <div class="flex flex-col items-center w-full mt-6">
+            <img src="img/festrules.png" alt="Fest Characters" class="w-full max-w-4xl">
+        </div>
+        <h2 class="text-xl lg:text-3xl font-semibold mt-20">Los juegos clásicos de fiesta, con el toque único de Fest.</h2>
+        <div class="flex flex-col items-center w-full mt-6">
+            <img src="img/games.png" alt="Fest Characters" class="w-full max-w-sm md:max-w-2xl">
+        </div>
+        <h2 class="text-xl lg:text-3xl font-semibold mt-20">Modos hechos para conectar de verdad.</h2>
+        <p class="text-base lg:text-lg mt-4 lg:max-w-2xl mx-auto">Preguntas y dinámicas diseñadas para abrir conversaciones sin filtro, compartir historias y acercarte más a las personas que te importan.</p>
+        <div class="flex flex-col items-center w-full mt-6">
+            <img src="img/example_bondscouples.png" alt="Fest Characters" class="w-full max-w-6xl">
+        </div>
+    </section>
+
+    <!-- Actualizaciones -->
+    <section class="text-left lg:text-center py-10 lg:py-20 px-4 lg:px-10">
+        <h2 class="text-xl lg:text-3xl font-semibold">¡Con Fest la diversión nunca termina! Nuevas cartas, retos y tendencias en cada actualización, incluyendo nuevos modos de juego.</h2>
+    </section>
+
+    <!-- Preguntas Frecuentes -->
+    <section class="text-left lg:text-center py-10 lg:py-20 px-4 lg:px-6">
+        <h2 class="text-xl lg:text-3xl font-semibold">Preguntas Frecuentes</h2>
+        <div class="mt-6 text-left lg:max-w-2xl mx-auto space-y-4 text-black select-none">
+            <details class="bg-white p-4 rounded-lg">
+                <summary class="font-semibold cursor-pointer">¿Fest es gratis?</summary>
+                <p class="mt-2">Sí, puedes descargar Fest gratis y empezar a jugar de inmediato. Algunos modos de juego son de pago, pero puedes comprarlos una sola vez y son tuyos para siempre. También tienes la opción de suscribirte para desbloquear todo el contenido.</p>
+            </details>
+            <details class="bg-white p-4 rounded-lg">
+                <summary class="font-semibold cursor-pointer">¿Necesito suscribirme para jugar?</summary>
+                <p class="mt-2">No. La suscripción es opcional. Puedes comprar solo los modos de juego que prefieras y jugarlos sin límite. La suscripción es para quienes quieren acceso total a todos los modos de juego, pero puedes cancelarla cuando quieras.</p>
+                <p class="mt-2">La suscripción se renueva automáticamente, pero puedes cancelarla en cualquier momento desde tu cuenta de Apple o Google. No te preocupes, seguirás teniendo acceso hasta el final del periodo que pagaste.</p>
+            </details>
+            <details class="bg-white p-4 rounded-lg">
+                <summary class="font-semibold cursor-pointer">¿Los modos de juego que compro son míos para siempre?</summary>
+                <p class="mt-2">Sí. Cuando compras un modo de juego, es tuyo de por vida. No hay cargos ocultos ni compras repetitivas.</p>
+            </details>
+            <details class="bg-white p-4 rounded-lg">
+                <summary class="font-semibold cursor-pointer">¿Fest se actualiza con nuevo contenido?</summary>
+                <p class="mt-2">Sí. Siempre estamos agregando nuevas cartas y modos de juego para que Fest siempre ofrezca contenido fresco y divertido.</p>
+            </details>
+            <details class="bg-white p-4 rounded-lg">
+                <summary class="font-semibold cursor-pointer">¿Puedo jugar Fest sin conexión a internet?</summary>
+                <p class="mt-2">No. Fest necesita conexión a internet para funcionar. Podrás acceder a los modos de juego, pero la app requiere conexión activa para cargarlos y jugar.</p>
+            </details>
+            <p class="text-base text-white mt-6 lg:text-center">
+                ¿Tienes otra pregunta? Envíanos un correo a 
+                <a href="mailto:hi@festapp.fun" class="font-semibold hover:underline" target="_blank" rel="noopener noreferrer">hi@festapp.fun</a>
+            </p>
+        </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="flex flex-col items-center text-left pt-10 pb-20 lg:py-20 px-4 lg:px-6 lg:flex-row lg:justify-center">
+        <div class="hidden lg:flex w-1/2 justify-center">
+            <img src="img/pari_3.png" alt="Pari Fest" class="w-full max-w-md">
+        </div>
+        <div class="flex flex-col items-center lg:items-start w-full lg:w-1/2">
+            <h2 class="text-xl lg:text-3xl font-semibold leading-tight mb-4 lg:mb-2">
+                Por último, no está de más advertirte que Fest…
+            </h2>
+            <img src="img/pari_3.png" alt="Fest Pari" class="w-full max-w-xs lg:hidden mb-2">
+            <ul class="mt-4 space-y-1 text-base lg:text-lg">
+                <li>Podría convertir tu plan en algo increíble.</li>
+                <li>Podría exponer secretos que nadie veía venir.</li>
+                <li>Podría causar recuerdos que tu grupo mencionará por meses.</li>
+            </ul>
+            <div class="flex flex-col sm:flex-row gap-4 mt-6">
+                <button class="bg-white text-black font-semibold py-3 px-6 rounded-lg flex items-center shadow-md hover:bg-gray-200 transition">
+                    <span class="mr-2"><i class="fa-brands fa-apple"></i></span> Disponible pronto...
+                </button>
+                <a href="https://play.google.com/store/apps/details?id=com.fest.festapp" target="_blank" rel="noopener noreferrer" class="border border-white text-white font-semibold py-3 px-6 rounded-lg flex items-center shadow-md hover:bg-white hover:text-black transition">
+                    <span class="mr-2"><i class="fa-brands fa-google-play"></i></span> Descargar en Google Play
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-white text-center py-10 text-black px-2">
+        <a href="index.html">
+            <img src="img/fest_logo_black.png" alt="Fest Logo" class="w-32 mx-auto mb-4 lg:mb-6">
+        </a>
+        <div class="mt-4 lg:mt-6 space-y-2">
+            <p class="text-sm"><i class="fa-solid fa-location-dot"></i> 8 The Green, STE R, Dover, DE 19901, EE. UU.</p>
+            <p class="text-sm"><i class="fa-solid fa-envelope"></i> hi@festapp.fun</p>
+        </div>
+        <div class="flex gap-6 mt-4 lg:mt-6 justify-center">
+            <a href="https://www.instagram.com/fest_app/" target="_blank" rel="noopener noreferrer" class="w-8 h-8">
+                <i class="fa-brands fa-instagram text-2xl"></i>
+            </a>
+            <a href="https://www.tiktok.com/@fest_app/" target="_blank" rel="noopener noreferrer" class="w-8 h-8">
+                <i class="fa-brands fa-tiktok text-2xl"></i>
+            </a>
+            <a href="https://open.spotify.com/user/315oduasmzbs7odqviag4wxta4hq" target="_blank" rel="noopener noreferrer" class="w-8 h-8">
+                <i class="fa-brands fa-spotify text-2xl"></i>
+            </a>
+        </div>
+        <div class="mt-4 lg:mt-6">
+            <a href="terms-of-service.html" class="underline text-sm">Términos del Servicio</a> |
+            <a href="privacy-policy.html" class="underline text-sm">Política de Privacidad</a>
+        </div>
+        <p class="text-sm mt-4 lg:mt-6">© 2025 Fest Global LLC. Todos los derechos reservados. Juega con responsabilidad.</p>
+    </footer>
+
+    <script>
+        document.getElementById("language-switcher").addEventListener("change", function () {
+            const lang = this.value;
+            if (lang === "es") {
+                window.location.href = "/es/index.html"; // Redirige a la versión en español
+            } else {
+                window.location.href = "/index.html"; // Redirige a la versión en inglés
+            }
+        });
+    </script>
+</body>
+</html>
