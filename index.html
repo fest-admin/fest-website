@@ -22,7 +22,6 @@
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
       gtag('js', new Date());
-
       gtag('config', 'G-R8F3YPPQ8H');
     </script>
 
@@ -92,10 +91,10 @@
                     Fest is a social game for any kind of plan: chill nights at home, hangouts with friends, after-hours, random plans, you name it. With Fest, any hangout instantly gets more fun.
                 </p>
                 <div class="flex flex-col sm:flex-row gap-4 mt-6">
-                    <a href="https://apps.apple.com/us/app/fest-all-in-one-social-game/id6759347082" data-store-platform="ios" data-store-placement="footer_cta" data-store-platform="ios" data-store-placement="hero" target="_blank" rel="noopener noreferrer" class="bg-white text-black font-semibold py-3 px-6 rounded-lg flex items-center shadow-md hover:bg-gray-200 transition">
+                    <a href="https://apps.apple.com/us/app/fest-all-in-one-social-game/id6759347082" onclick="return trackStoreClickAndOpen(event, 'ios', 'hero', this.href)" target="_blank" rel="noopener noreferrer" class="bg-white text-black font-semibold py-3 px-6 rounded-lg flex items-center shadow-md hover:bg-gray-200 transition">
                         <span class="mr-2"><i class="fa-brands fa-apple"></i></span> Download on App Store
                     </a>
-                    <a href="https://play.google.com/store/apps/details?id=com.fest.festapp" data-store-platform="android" data-store-placement="footer_cta" data-store-platform="android" data-store-placement="hero" target="_blank" rel="noopener noreferrer" class="border border-white text-white font-semibold py-3 px-6 rounded-lg flex items-center shadow-md hover:bg-white hover:text-black transition">
+                    <a href="https://play.google.com/store/apps/details?id=com.fest.festapp" onclick="return trackStoreClickAndOpen(event, 'android', 'hero', this.href)" target="_blank" rel="noopener noreferrer" class="border border-white text-white font-semibold py-3 px-6 rounded-lg flex items-center shadow-md hover:bg-white hover:text-black transition">
                         <span class="mr-2"><i class="fa-brands fa-google-play"></i></span> Download on Google Play
                     </a>
                 </div>
@@ -211,10 +210,10 @@
                 <li>Create memories your group will talk about for months.</li>
             </ul>
             <div class="flex flex-col sm:flex-row gap-4 mt-6">
-                <a href="https://apps.apple.com/us/app/fest-all-in-one-social-game/id6759347082" target="_blank" rel="noopener noreferrer" class="bg-white text-black font-semibold py-3 px-6 rounded-lg flex items-center shadow-md hover:bg-gray-200 transition">
+                <a href="https://apps.apple.com/us/app/fest-all-in-one-social-game/id6759347082" onclick="return trackStoreClickAndOpen(event, 'ios', 'footer_cta', this.href)" target="_blank" rel="noopener noreferrer" class="bg-white text-black font-semibold py-3 px-6 rounded-lg flex items-center shadow-md hover:bg-gray-200 transition">
                         <span class="mr-2"><i class="fa-brands fa-apple"></i></span> Download on App Store
                     </a>
-                <a href="https://play.google.com/store/apps/details?id=com.fest.festapp" target="_blank" rel="noopener noreferrer" class="border border-white text-white font-semibold py-3 px-6 rounded-lg flex items-center shadow-md hover:bg-white hover:text-black transition">
+                <a href="https://play.google.com/store/apps/details?id=com.fest.festapp" onclick="return trackStoreClickAndOpen(event, 'android', 'footer_cta', this.href)" target="_blank" rel="noopener noreferrer" class="border border-white text-white font-semibold py-3 px-6 rounded-lg flex items-center shadow-md hover:bg-white hover:text-black transition">
                     <span class="mr-2"><i class="fa-brands fa-google-play"></i></span> Download on Google Play
                 </a>
             </div>
@@ -250,7 +249,9 @@
 
 
     <script>
-        function trackStoreClick(platform, placement) {
+        function trackStoreClickAndOpen(event, platform, placement, url) {
+            event.preventDefault();
+
             const isIos = platform === "ios";
             const metaEventName = isIos ? "ClickAppStore" : "ClickGooglePlay";
             const gaEventName = isIos ? "click_app_store" : "click_google_play";
@@ -268,16 +269,13 @@
             if (typeof gtag === "function") {
                 gtag("event", gaEventName, eventParams);
             }
-        }
 
-        document.querySelectorAll("[data-store-platform]").forEach(function (button) {
-            button.addEventListener("click", function () {
-                trackStoreClick(
-                    button.getAttribute("data-store-platform"),
-                    button.getAttribute("data-store-placement")
-                );
-            });
-        });
+            setTimeout(function () {
+                window.location.href = url;
+            }, 350);
+
+            return false;
+        }
     </script>
 
     <script>
