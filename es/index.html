@@ -15,6 +15,40 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
 
+
+    <!-- Google tag (GA4) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-R8F3YPPQ8H"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-R8F3YPPQ8H');
+    </script>
+
+    <!-- Meta Pixel Code -->
+    <script>
+      !function(f,b,e,v,n,t,s)
+      {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+      n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+      if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+      n.queue=[];t=b.createElement(e);t.async=!0;
+      t.src=v;s=b.getElementsByTagName(e)[0];
+      s.parentNode.insertBefore(t,s)}(window, document,'script',
+      'https://connect.facebook.net/en_US/fbevents.js');
+      fbq('init', '2240858573389632');
+      fbq('track', 'PageView');
+      fbq('track', 'ViewContent', {
+        content_name: 'Fest Landing Page',
+        content_category: 'App Landing Page'
+      });
+    </script>
+    <noscript>
+      <img height="1" width="1" style="display:none"
+           src="https://www.facebook.com/tr?id=2240858573389632&ev=PageView&noscript=1"/>
+    </noscript>
+    <!-- End Meta Pixel Code -->
+
     <!-- Font Awesome -->
     <script src="https://kit.fontawesome.com/d08c2dc91c.js" crossorigin="anonymous"></script>
     <style>
@@ -58,10 +92,10 @@
                     Fest es un social game para cualquier plan: noches chill en casa, salidas con amigos, afters, juntadas random, tú decides. Con Fest, cualquier hangout se vuelve mucho más divertido.
                 </p>
                 <div class="flex flex-col sm:flex-row gap-4 mt-6">
-                    <a href="https://apps.apple.com/us/app/fest-all-in-one-social-game/id6759347082" target="_blank" rel="noopener noreferrer" class="bg-white text-black font-semibold py-3 px-6 rounded-lg flex items-center shadow-md hover:bg-gray-200 transition">
+                    <a href="https://apps.apple.com/us/app/fest-all-in-one-social-game/id6759347082" data-store-platform="ios" data-store-placement="footer_cta" data-store-platform="ios" data-store-placement="hero" target="_blank" rel="noopener noreferrer" class="bg-white text-black font-semibold py-3 px-6 rounded-lg flex items-center shadow-md hover:bg-gray-200 transition">
                         <span class="mr-2"><i class="fa-brands fa-apple"></i></span> Descargar en App Store
                     </a>
-                    <a href="https://play.google.com/store/apps/details?id=com.fest.festapp" target="_blank" rel="noopener noreferrer" class="border border-white text-white font-semibold py-3 px-6 rounded-lg flex items-center shadow-md hover:bg-white hover:text-black transition">
+                    <a href="https://play.google.com/store/apps/details?id=com.fest.festapp" data-store-platform="android" data-store-placement="footer_cta" data-store-platform="android" data-store-placement="hero" target="_blank" rel="noopener noreferrer" class="border border-white text-white font-semibold py-3 px-6 rounded-lg flex items-center shadow-md hover:bg-white hover:text-black transition">
                         <span class="mr-2"><i class="fa-brands fa-google-play"></i></span> Descargar en Google Play
                     </a>
                 </div>
@@ -213,6 +247,38 @@
         </div>
         <p class="text-sm mt-4 lg:mt-6">© 2025-2026 Fest Global LLC. Todos los derechos reservados. Juega con responsabilidad.</p>
     </footer>
+
+
+    <script>
+        function trackStoreClick(platform, placement) {
+            const isIos = platform === "ios";
+            const metaEventName = isIos ? "ClickAppStore" : "ClickGooglePlay";
+            const gaEventName = isIos ? "click_app_store" : "click_google_play";
+
+            const eventParams = {
+                platform_target: platform,
+                placement: placement || "unknown",
+                source: "fest_landing"
+            };
+
+            if (typeof fbq === "function") {
+                fbq("trackCustom", metaEventName, eventParams);
+            }
+
+            if (typeof gtag === "function") {
+                gtag("event", gaEventName, eventParams);
+            }
+        }
+
+        document.querySelectorAll("[data-store-platform]").forEach(function (button) {
+            button.addEventListener("click", function () {
+                trackStoreClick(
+                    button.getAttribute("data-store-platform"),
+                    button.getAttribute("data-store-placement")
+                );
+            });
+        });
+    </script>
 
     <script>
         document.getElementById("language-switcher").addEventListener("change", function () {
